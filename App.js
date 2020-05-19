@@ -7,30 +7,31 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var images = [{
-    url: '',
+    url: 'https://gamepedia.cursecdn.com/dota2_gamepedia/d/d4/Invoke_icon.png',
     uniqueId: 1
 }, {
-    url: '',
+    url: 'https://gamepedia.cursecdn.com/dota2_gamepedia/b/bf/Chronosphere_icon.png',
     uniqueId: 2
 }, {
-    url: '',
+    url: 'https://gamepedia.cursecdn.com/dota2_gamepedia/0/07/Divided_We_Stand_icon.png',
     uniqueId: 3
 }, {
-    url: '',
+    url: 'https://gamepedia.cursecdn.com/dota2_gamepedia/1/17/Rolling_Thunder_icon.png',
     uniqueId: 4
 }, {
-    url: '',
+    url: 'https://gamepedia.cursecdn.com/dota2_gamepedia/1/1c/Thundergod%27s_Wrath_icon.png',
     uniqueId: 5
 }, {
-    url: '',
+    url: 'https://gamepedia.cursecdn.com/dota2_gamepedia/4/4a/Wukong%27s_Command_icon.png',
     uniqueId: 6
 }, {
-    url: '',
+    url: 'https://gamepedia.cursecdn.com/dota2_gamepedia/1/1f/Primal_Split_icon.png',
     uniqueId: 7
 }, {
-    url: '',
+    url: 'https://gamepedia.cursecdn.com/dota2_gamepedia/1/16/Time_Lapse_icon.png',
     uniqueId: 8
 }];
+var frontOfSquareUrl = 'https://data.tooliphone.net/iskin/themes/6125/4055/preview-256.png';
 
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
@@ -43,7 +44,8 @@ var App = function (_React$Component) {
         _this.state = {
             firstClickId: null,
             firstClickIndex: null,
-            gameState: []
+            gameState: [],
+            gameOver: false
         };
         _this.randomArray = _this.randomArray.bind(_this);
         _this.flipAndCheck = _this.flipAndCheck.bind(_this);
@@ -55,7 +57,6 @@ var App = function (_React$Component) {
         key: 'randomArray',
         value: function randomArray() {
             var array = [].concat(images, images);
-            console.log('random is called!');
             for (var i = array.length - 1; i > 0; i--) {
                 var j = Math.floor(Math.random() * i);
                 var temp = void 0;
@@ -74,16 +75,18 @@ var App = function (_React$Component) {
 
             if (!currentItem.classList.contains('matched') && !currentItem.classList.contains('active')) {
                 currentItem.classList.toggle('active');
-                console.log('toggled active');
                 if (firstClickId == null) {
                     //check if this is a first click
                     this.setState({ firstClickId: currentId, firstClickIndex: index }); //if so set firstClickId to the element Id
                 } else {
-                    console.log('This is not a first click!');
                     if (firstClickId == currentId) {
                         //if both the element have the same ID, they matched
-                        document.querySelectorAll('.square-wrap')[firstClickIndex].classList.add('matched'); //add 'matched' for the previous click
-                        currentItem.classList.add('matched'); //add 'matched' for the current click
+
+                        setTimeout(function () {
+                            document.querySelectorAll('.square-wrap')[firstClickIndex].classList.add('matched'); //add 'matched' for the previous click
+                            currentItem.classList.add('matched'); //add 'matched' for the current click
+                            this.checkWin(); //check if the game ends
+                        }.bind(this), 700);
                         this.setState({ firstClickId: null, firstClickIndex: null });
                     } else {
                         //if they don't have the same ID, reset the state and ready for new pair
@@ -95,22 +98,43 @@ var App = function (_React$Component) {
                     }
                 }
             }
-
-            this.checkWin();
         }
     }, {
         key: 'checkWin',
         value: function checkWin() {
             var count = 0;
             for (var i = 0; i < this.state.gameState.length; i++) {
+                //if every square is matched, then game ends.
                 if (document.querySelectorAll('.square-wrap')[i].classList.contains('matched')) {
                     count++;
                 }
             }
 
             if (count == this.state.gameState.length) {
-                console.log('gameover');
+
+                this.setState({ gameOver: true });
+                setTimeout(function () {
+                    return document.querySelector('#big-card').classList.add('active');
+                }, 0);
             }
+        }
+    }, {
+        key: 'resetGame',
+        value: function resetGame() {
+            var _this2 = this;
+
+            console.log('reset button is clicked!');
+            for (var i = 0; i < this.state.gameState.length; i++) {
+                document.querySelectorAll('.square-wrap')[i].classList = 'square-wrap';
+            } //reset everything
+
+            setTimeout(function () {
+                return _this2.randomArray();
+            }, 100); //reshuffle
+            this.setState({ firstClickId: null,
+                firstClickIndex: null,
+                gameOver: false });
+            document.querySelector('#big-card').classList.toggle('active');
         }
     }, {
         key: 'componentDidMount',
@@ -120,28 +144,45 @@ var App = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _this2 = this;
+            var _this3 = this;
 
             var squares = this.state.gameState.map(function (item, index) {
                 return React.createElement(Squares, { uniqueId: item.uniqueId,
                     url: item.url,
-                    flipAndCheck: _this2.flipAndCheck.bind(_this2),
+                    flipAndCheck: _this3.flipAndCheck.bind(_this3),
                     index: index
                 });
             });
 
             return React.createElement(
                 'div',
-                null,
+                { id: 'app-container' },
                 React.createElement(
                     'div',
-                    { id: 'square-container' },
-                    squares
-                ),
-                React.createElement(
-                    'button',
-                    { className: 'btn', onClick: this.randomArray },
-                    'Shuffle'
+                    { id: 'big-card' },
+                    React.createElement(
+                        'div',
+                        { id: 'square-container', className: 'square-front' },
+                        squares
+                    ),
+                    React.createElement(
+                        'div',
+                        { id: 'overlay-container', className: 'square-back' },
+                        React.createElement(
+                            'div',
+                            { id: 'overlay' },
+                            React.createElement(
+                                'p',
+                                null,
+                                'Game Over'
+                            ),
+                            React.createElement(
+                                'p',
+                                { id: 'play-again', onClick: this.resetGame.bind(this) },
+                                'Play Again?'
+                            )
+                        )
+                    )
                 )
             );
         }
@@ -162,16 +203,12 @@ var Squares = function Squares(props) {
             React.createElement(
                 'div',
                 { className: 'square-front' },
-                'front index ',
-                props.index,
-                ' ',
-                props.uniqueId
+                React.createElement('img', { src: frontOfSquareUrl, alt: '', className: 'img' })
             ),
             React.createElement(
                 'div',
                 { className: 'square-back' },
-                'back ',
-                props.uniqueId
+                React.createElement('img', { src: props.url, alt: '', className: 'img' })
             )
         )
     );

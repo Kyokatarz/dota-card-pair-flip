@@ -1,20 +1,50 @@
+body, html{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+#App{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #070B15;
+}
+
+#app-container{
+    width: fit-content;
+}
+
+#big-card{
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    position: relative;
+    
+}
+
 #square-container{
     display: inline-grid;
     grid-template-columns: auto auto auto auto;
     position: relative;
+    transform: translateZ(0.5px);
 }
 
 .square-wrap{
+    margin: 1px;
     width: 100px;
     height: 100px;
     border: 1px solid black;
-    transition: transform 0.5s;
+    transition: transform 0.7s;
     transform-style: preserve-3d;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    
 }
 
-/* .square-wrap:hover{
-    transform:  rotateY(180deg);
-} */
 
 .square-front, .square-back{
     width: 100%;
@@ -32,6 +62,45 @@
     transform: rotateY(180deg);
 }
 
+
+.img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#overlay-container{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    background-color: #0E1015;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+#overlay{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-family: 'Fredoka One', cursive;
+    font-size: 32px;
+    color: #E6E9EA;
+
+}
+
+#play-again:hover{
+    padding: 5px;
+    font-size: 38px;
+    cursor: pointer;
+}
+
 .matched{
-    background-color: burlywood;
+    transform: scale(0.75) rotateY(180deg);
 }
