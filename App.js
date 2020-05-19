@@ -115,7 +115,7 @@ var App = function (_React$Component) {
                 this.setState({ gameOver: true });
                 setTimeout(function () {
                     return document.querySelector('#big-card').classList.add('active');
-                }, 0);
+                }, 500);
             }
         }
     }, {

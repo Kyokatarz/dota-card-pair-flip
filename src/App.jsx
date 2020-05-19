@@ -108,7 +108,7 @@ class App extends React.Component{
         if (count == this.state.gameState.length){
             
             this.setState({gameOver: true});
-            setTimeout(()=>document.querySelector('#big-card').classList.add('active'), 0);
+            setTimeout(()=>document.querySelector('#big-card').classList.add('active'), 500);
         }
         
     };    
