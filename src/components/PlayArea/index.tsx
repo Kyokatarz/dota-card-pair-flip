@@ -115,10 +115,10 @@ const PlayArea = () => {
         </div>
         <div id='overlay-container' className='square-back'>
           <div id='overlay'>
-            <p>Game Over</p>
-            <p id='play-again' onClick={resetGame}>
+            <h1>Game Over</h1>
+            <div id='play-again-button' onClick={resetGame}>
               Play Again?
-            </p>
+            </div>
           </div>
         </div>
       </div>
