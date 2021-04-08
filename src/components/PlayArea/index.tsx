@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import randomizeArray from '../../utils/randomArray'
 import data from '../../data/url.json'
 import { GameStateType } from '../../types'
+import Square from '../Square'
 
 const PlayArea = () => {
   const [firstClickId, setFirstClickId] = useState<number>()
@@ -88,7 +89,32 @@ const PlayArea = () => {
     document.querySelector('#big-card')?.classList.remove('active')
   }
 
-  return <div></div>
+  return (
+    <div id='app-container'>
+      <div id='big-card'>
+        <div id='square-container' className='square-front'>
+          {gameState.map((item, index) => (
+            <Square
+              key={Math.random()}
+              flipAndCheck={flipAndCheck}
+              cardBackImgUrl={item.url}
+              index={index}
+              uniqueId={item.uniqueId}
+            />
+          ))}
+        </div>
+
+        <div id='overlay-container' className='square-back'>
+          <div id='overlay'>
+            <p>Game Over</p>
+            <p id='play-again' onClick={resetGame}>
+              Play Again?
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default PlayArea
