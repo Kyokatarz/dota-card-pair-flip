@@ -1,10 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+
+import randomizeArray from '../../utils/randomArray'
+import data from '../../data/url.json'
+import { GameStateType } from '../../types'
 
 const PlayArea = () => {
   const [firstClickId, setFirstClickId] = useState<number>()
   const [firstClickIndex, setFirstClickIndex] = useState<number>()
-  const [gameState, setGameState] = useState([])
+  const [gameState, setGameState] = useState<GameStateType>([])
   const [gameOver, setGameOver] = useState(false)
+  const cardBackList = data.cardBackUrlArray
+
+  useEffect(() => {
+    randomizeArray([...cardBackList, ...cardBackList])
+  })
 
   const flipAndCheck = (index: number, currentId: number) => {
     let currentElement = document.querySelectorAll('.square-wrap')[index]
@@ -62,6 +71,21 @@ const PlayArea = () => {
         500
       )
     }
+  }
+
+  const resetGame = () => {
+    //remove 'active' and 'matched'
+    for (let i = 0; i < gameState.length; i++) {
+      document
+        .querySelectorAll('.square-wrap')
+        [i].classList.remove('matched', 'active')
+    }
+    const newGameArray = randomizeArray([...cardBackList, ...cardBackList])
+    setGameState(newGameArray)
+    setFirstClickIndex(undefined)
+    setFirstClickId(undefined)
+    setGameOver(false)
+    document.querySelector('#big-card')?.classList.remove('active')
   }
 
   return <div></div>

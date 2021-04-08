@@ -71,6 +71,48 @@ class App extends React.Component {
     this.setState({ gameState: array })
   }
 
+  flipAndCheck(index, currentId) {
+    let currentItem = document.querySelectorAll('.square-wrap')[index]
+    let firstClickIndex = this.state.firstClickIndex
+    let firstClickId = this.state.firstClickId
+
+    if (
+      !currentItem.classList.contains('matched') &&
+      !currentItem.classList.contains('active')
+    ) {
+      currentItem.classList.toggle('active')
+      if (firstClickId == null) {
+        //check if this is a first click
+        this.setState({ firstClickId: currentId, firstClickIndex: index }) //if so set firstClickId to the element Id
+      } else {
+        if (firstClickId == currentId) {
+          //if both the element have the same ID, they matched
+
+          setTimeout(
+            function () {
+              document
+                .querySelectorAll('.square-wrap')
+                [firstClickIndex].classList.add('matched') //add 'matched' for the previous click
+              currentItem.classList.add('matched') //add 'matched' for the current click
+              this.checkWin() //check if the game ends
+            }.bind(this),
+            700
+          )
+          this.setState({ firstClickId: null, firstClickIndex: null })
+        } else {
+          //if they don't have the same ID, reset the state and ready for new pair
+          this.setState({ firstClickId: null, firstClickIndex: null })
+          setTimeout(function () {
+            document
+              .querySelectorAll('.square-wrap')
+              [firstClickIndex].classList.toggle('active')
+            currentItem.classList.toggle('active')
+          }, 700)
+        }
+      }
+    }
+  }
+
   checkWin() {
     let count = 0
     for (let i = 0; i < this.state.gameState.length; i++) {
