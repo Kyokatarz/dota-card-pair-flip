@@ -36,7 +36,7 @@ const PlayArea = () => {
       !currentElement.classList.contains('active')
     ) {
       currentElement.classList.toggle('active')
-      if (!firstClickIdRef.current || !firstClickIndexRef.current) {
+      if (!firstClickIdRef.current ?? !firstClickIndexRef.current) {
         console.log('is first click')
         //check if this is a first click
         //if so set firstClickId to the element Id
