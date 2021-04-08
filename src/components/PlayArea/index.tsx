@@ -86,20 +86,16 @@ const PlayArea = () => {
     }
   }
 
-  // const resetGame = () => {
-  //   //remove 'active' and 'matched'
-  //   for (let i = 0; i < gameState.length; i++) {
-  //     document
-  //       .querySelectorAll('.square-wrap')
-  //       [i].classList.remove('matched', 'active')
-  //   }
-  //   const newGameArray = randomizeArray([...cardBackList, ...cardBackList])
-  //   setGameState(newGameArray)
-  //   setFirstClickIndex(undefined)
-  //   setFirstClickId(undefined)
-  //   setGameOver(false)
-  //   document.querySelector('#big-card')?.classList.remove('active')
-  // }
+  const resetGame = () => {
+    console.log('reset button is clicked!')
+    document.querySelectorAll('.square-wrap').forEach((el) => {
+      el.classList.remove('matched', 'active')
+    })
+    setGameState(randomizeArray([...cardBackList, ...cardBackList])) //reshuffle
+    firstClickIndexRef.current = undefined
+    firstClickIdRef.current = undefined
+    document.querySelector('#big-card')?.classList.remove('active')
+  }
 
   return (
     <div id='app-container'>
@@ -120,7 +116,9 @@ const PlayArea = () => {
         <div id='overlay-container' className='square-back'>
           <div id='overlay'>
             <p>Game Over</p>
-            <p id='play-again'>Play Again?</p>
+            <p id='play-again' onClick={resetGame}>
+              Play Again?
+            </p>
           </div>
         </div>
       </div>
