@@ -101,7 +101,6 @@ const PlayArea = () => {
     <div id='app-container'>
       aaaa
       <div id='big-card'>
-        bbb
         <div id='square-container' className='square-front'>
           {gameState.map((item, index) => (
             <Square
