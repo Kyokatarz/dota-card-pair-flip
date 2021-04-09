@@ -5,11 +5,14 @@ import data from '../../data/url.json'
 import { GameStateType } from '../../types'
 import Square from '../Square'
 
-const PlayArea = () => {
+type Props = {
+  changeBackground: () => void
+}
+
+const PlayArea = ({ changeBackground }: Props) => {
   const firstClickIdRef = useRef<number>()
   const firstClickIndexRef = useRef<number>()
   const [gameState, setGameState] = useState<GameStateType>([])
-  const [gameOver, setGameOver] = useState(false)
   const cardBackList = data.cardBackUrlArray
 
   useEffect(() => {
@@ -95,6 +98,7 @@ const PlayArea = () => {
     firstClickIndexRef.current = undefined
     firstClickIdRef.current = undefined
     document.querySelector('#big-card')?.classList.remove('active')
+    changeBackground()
   }
 
   return (
