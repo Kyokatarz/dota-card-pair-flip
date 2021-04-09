@@ -39,6 +39,56 @@
       "url":
         "https://gamepedia.cursecdn.com/dota2_gamepedia/1/16/Time_Lapse_icon.png",
       "uniqueId": 8
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/3/30/Culling_Blade_icon.png",
+      "uniqueId": 9
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/b/ba/Duel_icon.png",
+      "uniqueId": 10
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/9/90/Dream_Coil_icon.png",
+      "uniqueId": 11
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/b/b8/Black_Hole_icon.png",
+      "uniqueId": 12
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/0/0f/Coup_de_Grace_icon.png",
+      "uniqueId": 13
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/1/1e/Relocate_icon.png",
+      "uniqueId": 14
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/7/76/Doom_ability_icon.png",
+      "uniqueId": 15
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/a/aa/Supernova_icon.png",
+      "uniqueId": 16
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/0/0c/Mortimer_Kisses_icon.png",
+      "uniqueId": 17
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/7/78/Borrowed_Time_icon.png",
+      "uniqueId": 18
     }
   ]
 }
