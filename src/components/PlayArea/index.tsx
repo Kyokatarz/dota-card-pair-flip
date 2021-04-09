@@ -1,9 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import randomizeArray from '../../utils/randomArray'
+import getXElements from '../../utils/getRandomElementsFromArray'
 import data from '../../data/url.json'
 import { GameStateType } from '../../types'
 import Square from '../Square'
+import getCardBackList from '../../utils/getNewCardBackList'
 
 type Props = {
   changeBackground: () => void
@@ -13,13 +15,12 @@ const PlayArea = ({ changeBackground }: Props) => {
   const firstClickIdRef = useRef<number>()
   const firstClickIndexRef = useRef<number>()
   const [gameState, setGameState] = useState<GameStateType>([])
-  const cardBackList = data.cardBackUrlArray
 
   useEffect(() => {
-    const gameArray = randomizeArray([...cardBackList, ...cardBackList])
+    const gameArray = getCardBackList(16)
     setGameState(gameArray)
     console.log('setting new game')
-  }, [cardBackList])
+  }, [])
 
   useEffect(() => {
     console.log('rerendered', {
@@ -90,11 +91,12 @@ const PlayArea = ({ changeBackground }: Props) => {
   }
 
   const resetGame = () => {
+    const newGameState = getCardBackList(16)
     console.log('reset button is clicked!')
     document.querySelectorAll('.square-wrap').forEach((el) => {
       el.classList.remove('matched', 'active')
     })
-    setGameState(randomizeArray([...cardBackList, ...cardBackList])) //reshuffle
+    setGameState(newGameState) //reshuffle
     firstClickIndexRef.current = undefined
     firstClickIdRef.current = undefined
     document.querySelector('#big-card')?.classList.remove('active')

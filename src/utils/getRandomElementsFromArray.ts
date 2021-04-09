@@ -1,6 +1,6 @@
 const getRandomElementsFromArray = (
-  numberOfElements: 16 | 25 | 36,
-  elements: any[]
+  elements: any[],
+  numberOfElements: number
 ) => {
   return elements.splice(0, numberOfElements)
 }
