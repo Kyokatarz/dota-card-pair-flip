@@ -6,7 +6,6 @@ const getCardBackList = (numberOfCards: number) => {
   const allCardBacks = [...data.cardBackUrlArray]
   const randomizedAllCardBacks = randomizeArray(allCardBacks)
   const someCards = getXElements(randomizedAllCardBacks, numberOfCards / 2)
-  console.log(someCards)
   return randomizeArray([...someCards, ...someCards])
 }
 
