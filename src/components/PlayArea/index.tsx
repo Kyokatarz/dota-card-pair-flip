@@ -88,7 +88,6 @@ const PlayArea = ({ changeBackground }: Props) => {
 
   return (
     <div id='app-container'>
-      aaaa
       <div id='big-card'>
         <div id='square-container' className='square-front'>
           {gameState.map((item, index) => (
