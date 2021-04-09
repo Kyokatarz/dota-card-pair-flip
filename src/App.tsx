@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './App.css'
 import BackgroundImage from './components/BackGroundImg'
+import Footer from './components/Footer'
 
 import PlayArea from './components/PlayArea'
 import randomizeNumber from './utils/randomNumber'
@@ -19,6 +20,7 @@ function App() {
     <div id='App'>
       <BackgroundImage backgroundNumber={backgroundNumber} />
       <PlayArea changeBackground={changeBackground} />
+      <Footer />
     </div>
   )
 }
