@@ -1,8 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-
-import randomizeArray from '../../utils/randomArray'
-import getXElements from '../../utils/getRandomElementsFromArray'
-import data from '../../data/url.json'
+import React, { useEffect, useRef, useState } from 'react'
 import { GameStateType } from '../../types'
 import Square from '../Square'
 import getCardBackList from '../../utils/getNewCardBackList'
@@ -22,17 +18,7 @@ const PlayArea = ({ changeBackground }: Props) => {
     console.log('setting new game')
   }, [])
 
-  useEffect(() => {
-    console.log('rerendered', {
-      firstClickIndexRef,
-      firstClickIdRef,
-      gameState,
-    })
-  })
-
   const flipAndCheck = (index: number, currentId: number) => {
-    console.log('flipAndChecked: ', { index, currentId })
-    console.log(firstClickIdRef, firstClickIndexRef)
     const currentElement = document.querySelectorAll('.square-wrap')[index]
 
     if (
@@ -41,7 +27,6 @@ const PlayArea = ({ changeBackground }: Props) => {
     ) {
       currentElement.classList.toggle('active')
       if (!firstClickIdRef.current ?? !firstClickIndexRef.current) {
-        console.log('is first click')
         //check if this is a first click
         //if so set firstClickId to the element Id
         firstClickIdRef.current = currentId
@@ -61,7 +46,6 @@ const PlayArea = ({ changeBackground }: Props) => {
         } else {
           const firstClickIndex = firstClickIndexRef.current
           setTimeout(function () {
-            console.log('firstClickIndexRef element', firstClickIndexRef)
             document
               .querySelectorAll('.square-wrap')
               [firstClickIndex].classList.remove('active')
@@ -92,7 +76,6 @@ const PlayArea = ({ changeBackground }: Props) => {
 
   const resetGame = () => {
     const newGameState = getCardBackList(16)
-    console.log('reset button is clicked!')
     document.querySelectorAll('.square-wrap').forEach((el) => {
       el.classList.remove('matched', 'active')
     })
