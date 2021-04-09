@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira:wght@500&display=swap');
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+#App {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #070b15;
+}
+
+#app-container {
+  width: fit-content;
+}
+
+#big-card {
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+#square-container {
+  display: inline-grid;
+  grid-template-columns: auto auto auto auto;
+  row-gap: 5px;
+  position: relative;
+  transform: translateZ(0.5px);
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.836);
+  border: 2px solid orange;
+}
+
+.square-wrap {
+  margin: 1px;
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.square-front,
+.square-back {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.square-back {
+  position: absolute;
+  top: 0;
+  transform: rotateY(180deg);
+}
+
+.active {
+  transform: rotateY(180deg);
+}
+
+.img {
+  width: 100%;
+}
+
+#overlay-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  background-color: #0e1015;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+#overlay {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-family: 'Saira', sans-serif;
+  font-size: 32px;
+  color: #e6e9ea;
+}
+
+#play-again-button {
+  padding: 20px 20px 20px 20px;
+  border: 1px solid white;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+#play-again-button:hover {
+  transform: scale(1.3);
+  border-color: yellow;
+}
+
+.matched {
+  transform: scale(0.75) rotateY(180deg);
+}

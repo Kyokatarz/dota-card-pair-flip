@@ -1,0 +1,94 @@
+{
+  "frontOfCardUrl": "https://data.tooliphone.net/iskin/themes/6125/4055/preview-256.png",
+  "cardBackUrlArray": [
+    {
+      "url": "https://gamepedia.cursecdn.com/dota2_gamepedia/d/d4/Invoke_icon.png",
+      "uniqueId": 1
+    },
+    {
+      "url":
+        "https://gamepedia.cursecdn.com/dota2_gamepedia/b/bf/Chronosphere_icon.png",
+      "uniqueId": 2
+    },
+    {
+      "url":
+        "https://gamepedia.cursecdn.com/dota2_gamepedia/0/07/Divided_We_Stand_icon.png",
+      "uniqueId": 3
+    },
+    {
+      "url":
+        "https://gamepedia.cursecdn.com/dota2_gamepedia/1/17/Rolling_Thunder_icon.png",
+      "uniqueId": 4
+    },
+    {
+      "url":
+        "https://gamepedia.cursecdn.com/dota2_gamepedia/1/1c/Thundergod%27s_Wrath_icon.png",
+      "uniqueId": 5
+    },
+    {
+      "url":
+        "https://gamepedia.cursecdn.com/dota2_gamepedia/4/4a/Wukong%27s_Command_icon.png",
+      "uniqueId": 6
+    },
+    {
+      "url":
+        "https://gamepedia.cursecdn.com/dota2_gamepedia/1/1f/Primal_Split_icon.png",
+      "uniqueId": 7
+    },
+    {
+      "url":
+        "https://gamepedia.cursecdn.com/dota2_gamepedia/1/16/Time_Lapse_icon.png",
+      "uniqueId": 8
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/3/30/Culling_Blade_icon.png",
+      "uniqueId": 9
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/b/ba/Duel_icon.png",
+      "uniqueId": 10
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/9/90/Dream_Coil_icon.png",
+      "uniqueId": 11
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/b/b8/Black_Hole_icon.png",
+      "uniqueId": 12
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/0/0f/Coup_de_Grace_icon.png",
+      "uniqueId": 13
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/1/1e/Relocate_icon.png",
+      "uniqueId": 14
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/7/76/Doom_ability_icon.png",
+      "uniqueId": 15
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/a/aa/Supernova_icon.png",
+      "uniqueId": 16
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/0/0c/Mortimer_Kisses_icon.png",
+      "uniqueId": 17
+    },
+    {
+      "url":
+        "https://static.wikia.nocookie.net/dota2_gamepedia/images/7/78/Borrowed_Time_icon.png",
+      "uniqueId": 18
+    }
+  ]
+}
